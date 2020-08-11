@@ -1,5 +1,6 @@
 <?php
 
+use modava\auth\models\User;
 use modava\faq\FaqModule;
 use modava\faq\widgets\JsUtils;
 use modava\faq\widgets\NavbarWidgets;
@@ -27,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </h4>
             <button class="btn btn-outline-light" type="button" onclick="openCreateModal({model: 'Faq',
     });"
-               title="<?= FaqModule::t('faq', 'Create'); ?>">
+                    title="<?= FaqModule::t('faq', 'Create'); ?>">
                 <i class="fa fa-plus"></i> <?= FaqModule::t('faq', 'Create Question'); ?></button>
         </div>
 
@@ -48,10 +49,26 @@ $this->params['breadcrumbs'][] = $this->title;
                                             'class' => 'mb-4'
                                         ],
                                         'itemView' => function ($model, $key, $index, $widget) {
+                                            $buttonAnswer = '';
+
+                                            if (Yii::$app->user->can('faqFaqAnswer') || Yii::$app->user->can(User::DEV)) {
+                                                if ($model->content) {
+                                                    $message = FaqModule::t('faq', 'Update Answer');
+                                                } else {
+                                                    $message = FaqModule::t('faq', 'Answer the Question');
+                                                }
+
+                                                $buttonAnswer = Html::button($message,
+                                                    [
+                                                        'class' => 'btn btn-sm float-right btn-link',
+                                                        'onclick' => 'openUpdateModal({model: "Faq", id: ' . $model->primaryKey . '})'
+                                                    ]);
+                                            }
+
                                             return "
                                              <div class='mb-4'>
-                                                <h5 class='py-1'><a href='" . \yii\helpers\Url::toRoute(['view', 'id' => $model->primaryKey]) . "'>{$model->title}</a></h5>
-                                                <p>{$model->short_content}</p>
+                                                <h5 class='py-1'><a href='javascript:openDetailViewModal({model: \"Faq\", id: {$model->primaryKey}})'>{$model->title}</a></h5>
+                                                <p>{$model->short_content} {$buttonAnswer}</p>
                                                 <p>{$model->faqCategory->title}</p>
                                             </div>
                                             
@@ -92,7 +109,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-<?=JsUtils::widget()?>
+<?= JsUtils::widget() ?>
 
 <?php
 $script = <<< JS

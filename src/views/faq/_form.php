@@ -1,5 +1,6 @@
 <?php
 
+use modava\auth\models\User;
 use modava\faq\widgets\JsCreateModalWidget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -39,14 +40,19 @@ if (in_array(Yii::$app->controller->action->id, ['create', 'get-create-modal']))
                 ['prompt' => FaqModule::t('faq', 'Select an option ...')]
             ) ?>
         </div>
+        <?php if (Yii::$app->user->can('faqFaqAnswer') || Yii::$app->user->can(User::DEV)):?>
         <div class="col-12">
-            <?= $form->field($model, 'short_content')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'short_content')->widget(\modava\tiny\TinyMce::class, [
+                'options' => ['rows' => 6],
+            ]) ?>
         </div>
         <div class="col-12">
             <?= $form->field($model, 'content')->widget(\modava\tiny\TinyMce::class, [
                 'options' => ['rows' => 6],
+                'type' => 'content'
             ])->label(FaqModule::t('faq', 'Answer')) ?>
         </div>
+        <?php endif;?>
     </div>
 
 

@@ -20,6 +20,36 @@ $controllerURL = Url::toRoute(["/faq/handle-ajax"]);
             }
         });
     }
+    function openUpdateModal(params) {
+        let modalHTML = `<div class="modal fade ModalContainer" tabindex="-1" role="dialog" aria-labelledby="ModalContainer" aria-hidden="true"></div>`;
+
+        if ($('.ModalContainer').length) $('.ModalContainer').remove();
+
+        $('body').append(modalHTML);
+
+        $.get('<?=$controllerURL?>/get-update-modal', params, function(data, status, xhr) {
+            if (status === 'success') {
+                if (typeof tinymce != "undefined") tinymce.remove();
+                $('.ModalContainer').html(data);
+                $('.ModalContainer').modal();
+            }
+        });
+    }
+
+    function openDetailViewModal(params) {
+        let modalHTML = `<div class="modal fade ModalContainer" tabindex="-1" role="dialog" aria-labelledby="ModalContainer" aria-hidden="true"></div>`;
+
+        if ($('.ModalContainer').length) $('.ModalContainer').remove();
+
+        $('body').append(modalHTML);
+
+        $.get('<?=$controllerURL?>/get-detail-view-modal', params, function(data, status, xhr) {
+            if (status === 'success') {
+                $('.ModalContainer').html(data);
+                $('.ModalContainer').modal();
+            }
+        });
+    }
 
     function getListRelatedRecords(elementDOM) {
         let modalHTML = `<div class="modal fade ModalContainer" tabindex="-1" role="dialog" aria-labelledby="ModalContainer" aria-hidden="true"></div>`;

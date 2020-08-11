@@ -2,7 +2,6 @@
 
 use yii\helpers\Url;
 use yii\helpers\Html;
-use yii\widgets\DetailView;
 use backend\widgets\ToastrWidget;
 use modava\faq\widgets\NavbarWidgets;
 use modava\faq\FaqModule;
@@ -44,39 +43,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="col-xl-12">
             <section class="hk-sec-wrapper">
-                <?= DetailView::widget([
+                <?= $this->render('_detail', [
                     'model' => $model,
-                    'attributes' => [
-						'id',
-						'title',
-						'slug',
-						'content:raw',
-						'short_content',
-						'status',
-                        [
-                            'attribute' => 'status',
-                            'value' => function ($model) {
-                                return Yii::$app->controller->module->params['status'][$model->status];
-                            }
-                        ],
-                        [
-                            'attribute' => 'faq_category_id',
-                            'format' => 'raw',
-                            'value' => function ($model) {
-                                return Html::a($model->faqCategory->title, Url::toRoute(['faq-category/view', 'id' => $model->faq_category_id]));
-                            }
-                        ],
-						'created_at:datetime',
-						'updated_at:datetime',
-                        [
-                            'attribute' => 'userCreated.userProfile.fullname',
-                            'label' => FaqModule::t('faq', 'Created By')
-                        ],
-                        [
-                            'attribute' => 'userUpdated.userProfile.fullname',
-                            'label' => FaqModule::t('faq', 'Updated By')
-                        ],
-                    ],
                 ]) ?>
             </section>
         </div>

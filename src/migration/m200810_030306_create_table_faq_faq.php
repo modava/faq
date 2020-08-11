@@ -22,7 +22,7 @@ class m200810_030306_create_table_faq_faq extends Migration
             'title' => $this->string(255)->notNull(),
             'slug' => $this->string(255)->notNull()->unique(),
             'content' => $this->text()->null()->comment('Câu trả lời'),
-            'short_content' => $this->string(255)->comment('Câu trả lời ngắn'),
+            'short_content' => $this->text()->null()->comment('Câu trả lời ngắn'),
             'status' => $this->integer(1)->defaultValue(1)->comment('0: Không hiển thị, 1: Hiển thị'),
             'faq_category_id' => $this->integer(11)->notNull(),
             'created_at' => $this->integer(11)->notNull(),

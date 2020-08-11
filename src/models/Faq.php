@@ -70,9 +70,9 @@ class Faq extends FaqTable
     {
         return [
 			[['title', 'faq_category_id'], 'required'],
-			[['content'], 'string'],
+			[['content', 'short_content'], 'string'],
 			[['status', 'faq_category_id'], 'integer'],
-			[['title', 'slug', 'short_content'], 'string', 'max' => 255],
+			[['title', 'slug',], 'string', 'max' => 255],
 			[['slug'], 'unique'],
 			[['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['created_by' => 'id']],
 			[['faq_category_id'], 'exist', 'skipOnError' => true, 'targetClass' => FaqCategory::class, 'targetAttribute' => ['faq_category_id' => 'id']],
