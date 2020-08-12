@@ -31,28 +31,34 @@ if (in_array(Yii::$app->controller->action->id, ['create', 'get-create-modal']))
             <?= $form->field($model, 'title')->textInput(['maxlength' => true])->label(FaqModule::t('faq',
                 'Question')) ?>
         </div>
-        <div class="col-6">
-            <?= $form->field($model, 'status')->checkbox() ?>
-        </div>
+
+        <?php if (Yii::$app->user->can(User::DEV) || Yii::$app->user->can('admin') || Yii::$app->user->can('faqFaqUpdate-active')): ?>
+            <div class="col-6">
+                <?= $form->field($model, 'status')->checkbox() ?>
+            </div>
+        <?php else: ?>
+            <?= $form->field($model, 'status')->hiddenInput()->label(false) ?>
+        <?php endif; ?>
+
         <div class="col-6">
             <?= $form->field($model, 'faq_category_id')->dropDownList(
                 ArrayHelper::map(\modava\faq\models\table\FaqCategoryTable::getAllRecordsPublished(), 'id', 'title'),
                 ['prompt' => FaqModule::t('faq', 'Select an option ...')]
             ) ?>
         </div>
-        <?php if (Yii::$app->user->can('faqFaqAnswer') || Yii::$app->user->can(User::DEV)):?>
-        <div class="col-12">
-            <?= $form->field($model, 'short_content')->widget(\modava\tiny\TinyMce::class, [
-                'options' => ['rows' => 6],
-            ]) ?>
-        </div>
-        <div class="col-12">
-            <?= $form->field($model, 'content')->widget(\modava\tiny\TinyMce::class, [
-                'options' => ['rows' => 6],
-                'type' => 'content'
-            ])->label(FaqModule::t('faq', 'Answer')) ?>
-        </div>
-        <?php endif;?>
+        <?php if (Yii::$app->user->can('faqFaqAnswer') || Yii::$app->user->can(User::DEV)): ?>
+            <div class="col-12">
+                <?= $form->field($model, 'short_content')->widget(\modava\tiny\TinyMce::class, [
+                    'options' => ['rows' => 6],
+                ]) ?>
+            </div>
+            <div class="col-12">
+                <?= $form->field($model, 'content')->widget(\modava\tiny\TinyMce::class, [
+                    'options' => ['rows' => 12],
+                    'type' => 'content'
+                ])->label(FaqModule::t('faq', 'Answer')) ?>
+            </div>
+        <?php endif; ?>
     </div>
 
 

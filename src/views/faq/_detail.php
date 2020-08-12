@@ -12,9 +12,8 @@ use yii\widgets\DetailView;
     'attributes' => [
         'title',
         'slug',
-        'content:raw',
         'short_content:raw',
-        'status',
+        'content:raw',
         [
             'attribute' => 'faq_category_id',
             'format' => 'raw',

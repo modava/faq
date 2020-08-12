@@ -20,6 +20,9 @@ use modava\faq\FaqModule;
             <?=\Yii::$app->view->renderFile($filePath, ['model' => $model]);?>
         </div>
         <div class="modal-footer">
+            <?php if (isset($buttons)): foreach ($buttons as $button): ?>
+            <?=$button?>
+            <?php endforeach; endif;?>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
     </div>

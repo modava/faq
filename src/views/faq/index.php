@@ -5,10 +5,10 @@ use modava\faq\FaqModule;
 use modava\faq\widgets\JsUtils;
 use modava\faq\widgets\NavbarWidgets;
 use yii\helpers\Html;
-use yii\grid\GridView;
 use backend\widgets\ToastrWidget;
 use yii\widgets\ListView;
 use yii\widgets\Pjax;
+use \yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel modava\faq\models\search\FaqSearch */
@@ -50,8 +50,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                         ],
                                         'itemView' => function ($model, $key, $index, $widget) {
                                             $buttonAnswer = '';
+                                            $buttonDelete = '';
 
-                                            if (Yii::$app->user->can('faqFaqAnswer') || Yii::$app->user->can(User::DEV)) {
+                                            if (Yii::$app->user->can('faqFaqAnswer') || Yii::$app->user->can(User::DEV) || Yii::$app->user->can('admin')) {
                                                 if ($model->content) {
                                                     $message = FaqModule::t('faq', 'Update Answer');
                                                 } else {
@@ -65,10 +66,23 @@ $this->params['breadcrumbs'][] = $this->title;
                                                     ]);
                                             }
 
+                                            if (Yii::$app->user->can('faqFaqDelete') || Yii::$app->user->can(User::DEV) || Yii::$app->user->can('admin')) {
+                                                $buttonDelete = Html::a('<span class="glyphicon glyphicon-trash"></span>', 'javascript:;', [
+                                                    'title' => FaqModule::t('affiliate', 'Delete'),
+                                                    'class' => 'btn btn-link btn-xs btn-del float-right text-danger',
+                                                    'data-title' => FaqModule::t('affiliate', 'Delete?'),
+                                                    'data-pjax' => 0,
+                                                    'data-url' => Url::toRoute(['delete', 'id' => $model->primaryKey]),
+                                                    'btn-success-class' => 'success-delete',
+                                                    'btn-cancel-class' => 'cancel-delete',
+                                                    'data-placement' => 'top'
+                                                ]);
+                                            }
+
                                             return "
                                              <div class='mb-4'>
                                                 <h5 class='py-1'><a href='javascript:openDetailViewModal({model: \"Faq\", id: {$model->primaryKey}})'>{$model->title}</a></h5>
-                                                <p>{$model->short_content} {$buttonAnswer}</p>
+                                                <p>{$model->short_content} {$buttonDelete} {$buttonAnswer}</p>
                                                 <p>{$model->faqCategory->title}</p>
                                             </div>
                                             

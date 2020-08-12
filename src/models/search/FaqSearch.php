@@ -2,6 +2,7 @@
 
 namespace modava\faq\models\search;
 
+use modava\auth\models\User;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -61,7 +62,6 @@ class FaqSearch extends Faq
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'status' => $this->status,
             'faq_category_id' => $this->faq_category_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
@@ -73,6 +73,10 @@ class FaqSearch extends Faq
             ->andFilterWhere(['like', 'slug', $this->slug])
             ->andFilterWhere(['like', 'content', $this->content])
             ->andFilterWhere(['like', 'short_content', $this->short_content]);
+
+        if (!(Yii::$app->user->can(User::DEV) || Yii::$app->user->can('admin'))) {
+            $query->andFilterWhere(['status' => 1]);
+        }
 
         return $dataProvider;
     }

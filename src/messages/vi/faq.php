@@ -34,4 +34,9 @@ return [
     'Select an option ...' => 'Chọn một giá trị',
     'Description' => 'Mô tả',
     'Search' => 'Tìm kiếm',
+    'Detail' => 'Chi tiết',
+    'Update Answer' => 'Cập nhật câu trả lời',
+    'Faq' => 'Câu hỏi thường gặp',
+    'Faqs' => 'Câu hỏi thường gặp',
+    'Faq Categories' => 'Chủ đề',
 ];

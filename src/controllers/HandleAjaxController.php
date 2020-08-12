@@ -2,10 +2,13 @@
 
 namespace modava\faq\controllers;
 
+use modava\affiliate\AffiliateModule;
 use modava\faq\FaqModule;
 use modava\faq\components\MyFaqController;
 use modava\faq\helpers\Utils;
 use Yii;
+use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\web\Response;
 
 /*
@@ -42,7 +45,7 @@ class HandleAjaxController extends MyFaqController
             ]);
         }
 
-        $filePath = '@modava/faq/views/' . $formView . '/_form.php';
+        $filePath = '@modava/faq/views/' . $formView . '/_form.php'; // Reassign filePath for renderFile method
 
         $model = new $this->classModelName();
         $model->load(\Yii::$app->request->get());
@@ -68,7 +71,7 @@ class HandleAjaxController extends MyFaqController
             ]);
         }
 
-        $filePath = '@modava/faq/views/' . $formView . '/_form.php';
+        $filePath = '@modava/faq/views/' . $formView . '/_form.php'; // Reassign filePath for renderFile method
 
         $model = $this->classModelName::findOne(\Yii::$app->request->get('id'));
 
@@ -90,12 +93,22 @@ class HandleAjaxController extends MyFaqController
     public function actionGetDetailViewModal()
     {
         $formView = Utils::decamelize($this->modelName);
-        $filePath = \Yii::getAlias('@modava/faq/views/' . $formView . '/_detail.php');
-        if (!file_exists($filePath)) {
-            return $this->renderAjax('error-modal', [
-                'errorMessage' => FaqModule::t('faq', 'File is not existed'),
-            ]);
-        }$filePath = '@modava/faq/views/' . $formView . '/_detail.php';
+        $filePathModel = \Yii::getAlias('@modava/faq/views/' . $formView . '/_detail-modal.php');
+
+        if (file_exists($filePathModel)) {
+            $filePath = '@modava/faq/views/' . $formView . '/_detail-modal.php'; // Reassign filePath for renderFile method
+        } else {
+            $filePath = \Yii::getAlias('@modava/faq/views/' . $formView . '/_detail.php');
+
+            if (!file_exists($filePath)) {
+                return $this->renderAjax('error-modal', [
+                    'errorMessage' => FaqModule::t('faq', 'File is not existed'),
+                ]);
+            }
+
+            $filePath = '@modava/faq/views/' . $formView . '/_detail.php'; // Reassign filePath for renderFile method
+        }
+
 
         $model = $this->classModelName::findOne(\Yii::$app->request->get('id'));
 
@@ -104,12 +117,28 @@ class HandleAjaxController extends MyFaqController
             'model' => $model,
             'filePath' => $filePath,
             'title' => FaqModule::t('faq', 'Detail'),
+            'buttons' => [
+                Html::a(FaqModule::t('faq', 'Detail'), Url::toRoute(['faq/view', 'id' => $model->primaryKey]), ['class' => 'btn btn-primary'])
+            ]
         ]);
     }
 
     public function actionSaveAjax()
     {
-        $model = new $this->classModelName();
+        $id = Yii::$app->request->get('id');
+
+        if (!$id) {
+            $model = new $this->classModelName();
+        }
+        else {
+            $model = $this->classModelName::findOne($id);
+
+            if (!$model) {
+                return $this->renderAjax('error-modal', [
+                    'errorMessage' => FaqModule::t('faq', 'Record is not existed'),
+                ]);
+            }
+        }
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate() && $model->save()) {
