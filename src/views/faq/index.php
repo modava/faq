@@ -45,6 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <div class="dataTables_wrapper dt-bootstrap4 table-responsive px-4">
                                     <?= ListView::widget([
                                         'dataProvider' => $dataProvider,
+                                        'summary' => FaqModule::t('faq', 'Showing <b>{begin, number}-{end, number}</b> of <b>{totalCount, number}</b> {totalCount, plural, one{item} other{items}}.'),
                                         'summaryOptions' => [
                                             'class' => 'mb-4'
                                         ],
