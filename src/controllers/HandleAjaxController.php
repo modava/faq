@@ -116,7 +116,7 @@ class HandleAjaxController extends MyFaqController
             'modelName' => $this->modelName,
             'model' => $model,
             'filePath' => $filePath,
-            'title' => FaqModule::t('faq', 'Detail'),
+            'title' => $model->title,
             'buttons' => [
                 Html::a(FaqModule::t('faq', 'Detail'), Url::toRoute(['faq/view', 'id' => $model->primaryKey]), ['class' => 'btn btn-primary'])
             ]

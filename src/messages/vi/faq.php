@@ -39,4 +39,6 @@ return [
     'Faq' => 'Câu hỏi thường gặp',
     'Faqs' => 'Câu hỏi thường gặp',
     'Faq Categories' => 'Chủ đề',
+    'Showing <b>{begin, number}-{end, number}</b> of <b>{totalCount, number}</b> {totalCount, plural, one{item} other{items}}.' => 'Hiển thị <b>{begin, number}-{end, number}</b> tìm kiếm trong số <b>{totalCount, number}</b> kết quả.',
+
 ];

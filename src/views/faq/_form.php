@@ -54,13 +54,12 @@ if (in_array(Yii::$app->controller->action->id, ['create', 'get-create-modal']))
             </div>
             <div class="col-12">
                 <?= $form->field($model, 'content')->widget(\modava\tiny\TinyMce::class, [
-                    'options' => ['rows' => 12],
+                    'options' => ['rows' => 20],
                     'type' => 'content'
                 ])->label(FaqModule::t('faq', 'Answer')) ?>
             </div>
         <?php endif; ?>
     </div>
-
 
     <div class="form-group">
         <?= Html::submitButton(FaqModule::t('faq', 'Save'), ['class' => 'btn btn-success']) ?>

@@ -5,6 +5,14 @@ $controllerURL = Url::toRoute(["/faq/handle-ajax"]);
 
 ?>
 <script>
+    function changeButtonSave(modalConatiner) {
+        let buttonSubmit = modalConatiner.find('button[type="submit"]').clone();
+        modalConatiner.find('button[type="submit"]').remove();
+        buttonSubmit.on('click', function () {
+            modalConatiner.find('form').submit();
+        });
+        modalConatiner.find('.modal-footer').append(buttonSubmit);
+    }
     function openCreateModal(params) {
         let modalHTML = `<div class="modal fade ModalContainer" tabindex="-1" role="dialog" aria-labelledby="ModalContainer" aria-hidden="true"></div>`;
 
@@ -17,6 +25,8 @@ $controllerURL = Url::toRoute(["/faq/handle-ajax"]);
                 if (typeof tinymce != "undefined") tinymce.remove();
                 $('.ModalContainer').html(data);
                 $('.ModalContainer').modal();
+
+                changeButtonSave($('.ModalContainer'));
             }
         });
     }
@@ -32,6 +42,8 @@ $controllerURL = Url::toRoute(["/faq/handle-ajax"]);
                 if (typeof tinymce != "undefined") tinymce.remove();
                 $('.ModalContainer').html(data);
                 $('.ModalContainer').modal();
+
+                changeButtonSave($('.ModalContainer'));
             }
         });
     }
