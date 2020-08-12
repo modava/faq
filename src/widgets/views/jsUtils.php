@@ -11,7 +11,7 @@ $controllerURL = Url::toRoute(["/faq/handle-ajax"]);
         buttonSubmit.on('click', function () {
             modalConatiner.find('form').submit();
         });
-        modalConatiner.find('.modal-footer').append(buttonSubmit);
+        modalConatiner.find('.modal-footer').prepend(buttonSubmit);
     }
     function openCreateModal(params) {
         let modalHTML = `<div class="modal ModalContainer" tabindex="-1" role="dialog" ></div>`;

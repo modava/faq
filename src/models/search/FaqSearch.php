@@ -69,10 +69,10 @@ class FaqSearch extends Faq
             'updated_by' => $this->updated_by,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'slug', $this->slug])
-            ->andFilterWhere(['like', 'content', $this->content])
-            ->andFilterWhere(['like', 'short_content', $this->short_content]);
+        $query->andFilterWhere(['like', 'title', $this->title]);
+        // $query->andFilterWhere(['like', 'slug', $this->slug]); // the slug will be auto generate by behavior so it make the filter not true
+        $query->andFilterWhere(['like', 'content', $this->content]);
+        $query->andFilterWhere(['like', 'short_content', $this->short_content]);
 
         if (!(Yii::$app->user->can(User::DEV) || Yii::$app->user->can('admin'))) {
             $query->andFilterWhere(['status' => 1]);

@@ -3,6 +3,7 @@
 namespace modava\faq\controllers;
 
 use modava\affiliate\AffiliateModule;
+use modava\auth\models\User;
 use modava\faq\FaqModule;
 use modava\faq\components\MyFaqController;
 use modava\faq\helpers\Utils;
@@ -117,9 +118,9 @@ class HandleAjaxController extends MyFaqController
             'model' => $model,
             'filePath' => $filePath,
             'title' => $model->title,
-            'buttons' => [
+            'buttons' => Yii::$app->user->can(User::DEV || Yii::$app->user->can('admin')) ? [
                 Html::a(FaqModule::t('faq', 'Detail'), Url::toRoute(['faq/view', 'id' => $model->primaryKey]), ['class' => 'btn btn-primary'])
-            ]
+            ] : []
         ]);
     }
 
