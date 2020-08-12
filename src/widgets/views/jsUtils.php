@@ -14,7 +14,7 @@ $controllerURL = Url::toRoute(["/faq/handle-ajax"]);
         modalConatiner.find('.modal-footer').append(buttonSubmit);
     }
     function openCreateModal(params) {
-        let modalHTML = `<div class="modal fade ModalContainer" tabindex="-1" role="dialog" aria-labelledby="ModalContainer" aria-hidden="true"></div>`;
+        let modalHTML = `<div class="modal ModalContainer" tabindex="-1" role="dialog" ></div>`;
 
         if ($('.ModalContainer').length) $('.ModalContainer').remove();
 
@@ -31,7 +31,7 @@ $controllerURL = Url::toRoute(["/faq/handle-ajax"]);
         });
     }
     function openUpdateModal(params) {
-        let modalHTML = `<div class="modal fade ModalContainer" tabindex="-1" role="dialog" aria-labelledby="ModalContainer" aria-hidden="true"></div>`;
+        let modalHTML = `<div class="modal ModalContainer" tabindex="-1" role="dialog" aria-labelledby="ModalContainer" aria-hidden="true"></div>`;
 
         if ($('.ModalContainer').length) $('.ModalContainer').remove();
 
@@ -49,7 +49,7 @@ $controllerURL = Url::toRoute(["/faq/handle-ajax"]);
     }
 
     function openDetailViewModal(params) {
-        let modalHTML = `<div class="modal fade ModalContainer" tabindex="-1" role="dialog" aria-labelledby="ModalContainer" aria-hidden="true"></div>`;
+        let modalHTML = `<div class="modal ModalContainer" tabindex="-1" role="dialog" aria-labelledby="ModalContainer" aria-hidden="true"></div>`;
 
         if ($('.ModalContainer').length) $('.ModalContainer').remove();
 
@@ -64,7 +64,7 @@ $controllerURL = Url::toRoute(["/faq/handle-ajax"]);
     }
 
     function getListRelatedRecords(elementDOM) {
-        let modalHTML = `<div class="modal fade ModalContainer" tabindex="-1" role="dialog" aria-labelledby="ModalContainer" aria-hidden="true"></div>`;
+        let modalHTML = `<div class="modal ModalContainer" tabindex="-1" role="dialog" aria-labelledby="ModalContainer" aria-hidden="true"></div>`;
 
         if ($('.ModalContainer').length) $('.ModalContainer').remove();
 

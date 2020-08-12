@@ -24,3 +24,7 @@ li.nav-item.mb-5 {
 .form-group .help-block {
     color: red;
 }
+
+.hk-sec-wrapper {
+    padding: 1.5rem 0rem;
+}
