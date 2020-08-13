@@ -2,11 +2,6 @@
 use modava\faq\FaqModule;
 
 return [
-    'availableLocales' => [
-        'vi' => 'Tiếng Việt',
-        'en' => 'English',
-        'jp' => 'Japan',
-    ],
     'faqName' => 'Faq',
     'faqVersion' => '1.0',
     'status' => [

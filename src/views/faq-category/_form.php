@@ -32,7 +32,7 @@ if (Yii::$app->controller->action->id === 'create') $model->status = 1;
     </div>
 
     <div class="form-group">
-        <?= Html::submitButton(FaqModule::t('affiliate', 'Save'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(FaqModule::t('faq', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

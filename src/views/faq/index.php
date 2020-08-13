@@ -76,9 +76,9 @@ $this->registerCss('
 
                                             if (Yii::$app->user->can('faqFaqDelete') || Yii::$app->user->can(User::DEV) || Yii::$app->user->can('admin')) {
                                                 $buttonDelete = Html::a('<span class="glyphicon glyphicon-trash"></span>', 'javascript:;', [
-                                                    'title' => FaqModule::t('affiliate', 'Delete'),
+                                                    'title' => FaqModule::t('faq', 'Delete'),
                                                     'class' => 'btn btn-link btn-xs btn-del float-right text-danger',
-                                                    'data-title' => FaqModule::t('affiliate', 'Delete?'),
+                                                    'data-title' => FaqModule::t('faq', 'Delete?'),
                                                     'data-pjax' => 0,
                                                     'data-url' => Url::toRoute(['delete', 'id' => $model->primaryKey]),
                                                     'btn-success-class' => 'success-delete',
@@ -97,10 +97,10 @@ $this->registerCss('
                                         ";
                                         },
                                         'pager' => [
-                                            'firstPageLabel' => FaqModule::t('affiliate', 'First'),
-                                            'lastPageLabel' => FaqModule::t('affiliate', 'Last'),
-                                            'prevPageLabel' => FaqModule::t('affiliate', 'Previous'),
-                                            'nextPageLabel' => FaqModule::t('affiliate', 'Next'),
+                                            'firstPageLabel' => FaqModule::t('faq', 'First'),
+                                            'lastPageLabel' => FaqModule::t('faq', 'Last'),
+                                            'prevPageLabel' => FaqModule::t('faq', 'Previous'),
+                                            'nextPageLabel' => FaqModule::t('faq', 'Next'),
                                             'maxButtonCount' => 5,
 
                                             'options' => [

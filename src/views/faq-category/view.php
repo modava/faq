@@ -61,11 +61,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         'updated_at:datetime',
                         [
                             'attribute' => 'userCreated.userProfile.fullname',
-                            'label' => FaqModule::t('affiliate', 'Created By')
+                            'label' => FaqModule::t('faq', 'Created By')
                         ],
                         [
                             'attribute' => 'userUpdated.userProfile.fullname',
-                            'label' => FaqModule::t('affiliate', 'Updated By')
+                            'label' => FaqModule::t('faq', 'Updated By')
                         ],
                     ],
                 ]) ?>

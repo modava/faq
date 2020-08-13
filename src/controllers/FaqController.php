@@ -191,7 +191,7 @@ class FaqController extends MyController
             return $model;
         }
 
-        throw new NotFoundHttpException(Yii::t('faq', 'The requested page does not exist.'));
+        throw new NotFoundHttpException(FaqModule::t('faq', 'The requested page does not exist.'));
     }
 
     public function actionValidate($id = null)

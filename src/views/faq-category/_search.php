@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use modava\faq\FaqModule;
 
 /* @var $this yii\web\View */
 /* @var $model modava\faq\models\search\FaqCategorySearch */
@@ -37,8 +38,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'updated_by') ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('faq', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Yii::t('faq', 'Reset'), ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton(FaqModule::t('faq', 'Search'), ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton(FaqModule::t('faq', 'Reset'), ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

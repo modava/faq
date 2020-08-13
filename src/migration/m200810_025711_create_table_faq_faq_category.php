@@ -3,7 +3,7 @@
 use yii\db\Migration;
 
 /**
- * Class m200810_030306_create_table_affiliate_faq_category
+ * Class m200810_030306_create_table_faq_category
  */
 class m200810_025711_create_table_faq_faq_category extends Migration
 {

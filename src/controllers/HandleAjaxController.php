@@ -2,7 +2,6 @@
 
 namespace modava\faq\controllers;
 
-use modava\affiliate\AffiliateModule;
 use modava\auth\models\User;
 use modava\faq\FaqModule;
 use modava\faq\components\MyFaqController;

@@ -60,10 +60,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </div>
                                     ',
                                     'pager' => [
-                                        'firstPageLabel' => FaqModule::t('affiliate', 'First'),
-                                        'lastPageLabel' => FaqModule::t('affiliate', 'Last'),
-                                        'prevPageLabel' => FaqModule::t('affiliate', 'Previous'),
-                                        'nextPageLabel' => FaqModule::t('affiliate', 'Next'),
+                                        'firstPageLabel' => FaqModule::t('faq', 'First'),
+                                        'lastPageLabel' => FaqModule::t('faq', 'Last'),
+                                        'prevPageLabel' => FaqModule::t('faq', 'Previous'),
+                                        'nextPageLabel' => FaqModule::t('faq', 'Next'),
                                         'maxButtonCount' => 5,
 
                                         'options' => [
@@ -128,22 +128,22 @@ $this->params['breadcrumbs'][] = $this->title;
                                         ],
                                         [
                                             'class' => 'yii\grid\ActionColumn',
-                                            'header' => FaqModule::t('affiliate', 'Actions'),
+                                            'header' => FaqModule::t('faq', 'Actions'),
                                             'template' => '{update} {delete}',
                                             'buttons' => [
                                                 'update' => function ($url, $model) {
                                                     return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
-                                                        'title' => FaqModule::t('affiliate', 'Update'),
-                                                        'alia-label' => FaqModule::t('affiliate', 'Update'),
+                                                        'title' => FaqModule::t('faq', 'Update'),
+                                                        'alia-label' => FaqModule::t('faq', 'Update'),
                                                         'data-pjax' => 0,
                                                         'class' => 'btn btn-info btn-xs'
                                                     ]);
                                                 },
                                                 'delete' => function ($url, $model) {
                                                     return Html::a('<span class="glyphicon glyphicon-trash"></span>', 'javascript:;', [
-                                                        'title' => FaqModule::t('affiliate', 'Delete'),
+                                                        'title' => FaqModule::t('faq', 'Delete'),
                                                         'class' => 'btn btn-danger btn-xs btn-del',
-                                                        'data-title' => FaqModule::t('affiliate', 'Delete?'),
+                                                        'data-title' => FaqModule::t('faq', 'Delete?'),
                                                         'data-pjax' => 0,
                                                         'data-url' => $url,
                                                         'btn-success-class' => 'success-delete',
