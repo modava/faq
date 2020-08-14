@@ -25,7 +25,7 @@ use yii\widgets\DetailView;
             'attribute' => 'status',
             'format' => 'raw',
             'value' => function ($model) {
-                return Yii::$app->controller->module->params['status'][$model->status];
+                return Yii::$app->getModule('affiliate')->params['status'][$model->status];
             }
         ],
         'created_at:datetime',

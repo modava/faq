@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         [
                             'attribute' => 'status',
                             'value' => function ($model) {
-                                return Yii::$app->controller->module->params['status'][$model->status];
+                                return Yii::$app->getModule('affiliate')->params['status'][$model->status];
                             }
                         ],
                         'description:raw',

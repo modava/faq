@@ -46,6 +46,6 @@ class Utils
     }
 
     public static function isReleaseObject ($obj) {
-        return !in_array($obj, Yii::$app->controller->module->params['not_release_object']);
+        return !in_array($obj, Yii::$app->getModule('affiliate')->params['not_release_object']);
     }
 }
