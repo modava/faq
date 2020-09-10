@@ -12,6 +12,7 @@ use yii\db\Exception;
 use yii\filters\VerbFilter;
 use yii\helpers\Html;
 use yii\web\NotFoundHttpException;
+
 use yii\web\Response;
 
 /**
@@ -176,14 +177,11 @@ class FaqController extends MyController
     }
 
     /**
-     * Finds the Faq model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
      * @return Faq the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-
-
     protected function findModel($id)
     {
         if (($model = Faq::findOne($id)) !== null) {
