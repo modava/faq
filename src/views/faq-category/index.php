@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <!-- Row -->
         <div class="row">
             <div class="col-xl-12">
-                <section class="hk-sec-wrapper">
+                <section class="hk-sec-wrapper index">
 
                     <?php Pjax::begin(['id' => 'faq-pjax', 'timeout' => false, 'enablePushState' => true, 'clientOptions' => ['method' => 'GET']]); ?>
                     <div class="row">
