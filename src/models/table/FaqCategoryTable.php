@@ -2,11 +2,11 @@
 
 namespace modava\faq\models\table;
 
+use backend\components\MyModel;
 use cheatsheet\Time;
 use Yii;
-use yii\db\ActiveRecord;
 
-class FaqCategoryTable extends \yii\db\ActiveRecord
+class FaqCategoryTable extends MyModel
 {
     const CACHE_KEY_GET_ALL = 'redis-faq-coupon-type-get-all';
 

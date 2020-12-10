@@ -2,11 +2,10 @@
 
 namespace modava\faq\models\table;
 
-use cheatsheet\Time;
+use backend\components\MyModel;
 use Yii;
-use yii\db\ActiveRecord;
 
-class FaqTable extends \yii\db\ActiveRecord
+class FaqTable extends MyModel
 {
     public static function tableName()
     {
